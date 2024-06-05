@@ -9,11 +9,23 @@ async function getData(){
     let datas= await res.json()
     let alldata=datas.data[0]
     let time=alldata.timings
-    let d=alldata.readable
-    console.log(d);
+    let d=datas.data[0].date.readable
+    let day=datas.data[0].date.gregorian.weekday.en
+    let hijri=datas.data[0].date.hijri.date
+    console.log(hijri);
     let list =document.createElement("p")
+
+
     list.classList.add("text-white")
     list.innerText=" Fajr :"+time.Fajr+" Dhuhr: "+time.Dhuhr+" Asr: "+time.Asr+" Maghrib: "+time.Maghrib +" Isha: "+ time.Isha
+    list.innerText+=" Date :"+d
+    list.innerText+=" Day :"+day
+    list.innerText+=" Date in hijri :"+hijri
+    list.classList.add("bg-dark")
+
+
+
+
 
     container.append(list)
     console.log(list);
@@ -30,6 +42,8 @@ async function getData2(){
     list.classList.add("text-white")
     list.innerText="City :"+datas.name+" temperature: "+datas.main.temp +" Longitude : "+datas.coord.lon +" Latitude :"+datas.coord.lat+" humidity: "+datas.main.humidity
     container.append(list)
+    list.classList.add("bg-dark")
+
     console.log(list);
 
 
